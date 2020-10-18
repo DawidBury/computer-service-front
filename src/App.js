@@ -4,23 +4,33 @@ import "./App.scss";
 function App() {
   return (
     <div className="App">
-      <section className="landing">
-        <nav>
-          <ul>
-            <ol>
+      <nav className="navbar navbar-expand-md sticky-top navbar-dark px-0 w-100 bg-dark">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#collapsibleNavbar"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav w-100">
+            <li>
               <a href="#">Strona główna</a>
-            </ol>
-            <ol>
+            </li>
+            <li>
               <a href="#">O nas</a>
-            </ol>
-            <ol>
+            </li>
+            <li>
               <a href="#">Kontakt</a>
-            </ol>
-            <ol className="report">
+            </li>
+            <li className="report">
               <a href="#">Zgłoszenie</a>
-            </ol>
+            </li>
           </ul>
-        </nav>
+        </div>
+      </nav>
+      <section className="landing">
         <div className="main-section">
           <p className="main-text m-0">Serwis komputerowy</p>
           <p className="text m-0">Wszystko dopasowane do Twoich potrzeb</p>
@@ -31,6 +41,7 @@ function App() {
           </div>
         </div>
       </section>
+      <section className="landing"></section>
     </div>
   );
 }

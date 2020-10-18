@@ -31,7 +31,7 @@ nav {
     display: flex;
     justify-content: flex-end;
   }
-  ol {
+  li {
     display: flex;
     padding: 1rem 3rem 1rem 3rem;
     justify-content: center;
@@ -85,6 +85,10 @@ nav {
   border: 2px solid $primary-color;
 }
 
+.outline-button:hover {
+  color: $white-text;
+}
+
 .main-section-buttons {
   margin-top: 1rem;
 }
@@ -103,6 +107,10 @@ nav {
   .main-section-buttons {
     display: flex;
     justify-content: center;
+  }
+
+  nav {
+    position: static;
   }
 }
 
