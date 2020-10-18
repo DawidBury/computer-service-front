@@ -22,12 +22,12 @@ function App() {
           </ul>
         </nav>
         <div className="main-section">
-          <p className="main-text">Serwis komputerowy</p>
-          <p className="text">Wszystko dopasowane do Twoich potrzeb</p>
-          <p className="text">Zrób zgłoszenie i przekonaj się sam</p>
+          <p className="main-text m-0">Serwis komputerowy</p>
+          <p className="text m-0">Wszystko dopasowane do Twoich potrzeb</p>
+          <p className="text m-0">Zrób zgłoszenie i przekonaj się sam</p>
           <div className="main-section-buttons">
-            <button className="button primary-button">Zgłoszenie</button>
-            <button className="button outline-button">Kontakt</button>
+            <button className="btn primary-button">Zgłoszenie</button>
+            <button className="btn outline-button">Kontakt</button>
           </div>
         </div>
       </section>

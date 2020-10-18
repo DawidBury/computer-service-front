@@ -1,14 +1,16 @@
+$primary-color: rgb(221, 164, 59);
+$white-text: rgb(230, 221, 221);
+$section-height: 90vh;
+$border-radius: 30px;
+
+@import "~bootstrap/scss/bootstrap.scss";
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Raleway", sans-serif;
 }
-
-$primary-color: rgb(221, 164, 59);
-$white-text: rgb(230, 221, 221);
-$section-height: 90vh;
-$border-radius: 30px;
 
 section {
   min-height: $section-height;
@@ -62,7 +64,7 @@ nav {
   background-color: $primary-color;
 }
 
-.button {
+.btn {
   font-weight: 600;
   font-size: 1.1em;
   width: 8rem;
