@@ -19,11 +19,15 @@ section {
 .landing {
   background: url("/img/mainpage.jpg");
   background-size: cover;
-  padding: 0rem 1rem;
 }
 
 a {
   text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+  color: $white-text;
 }
 
 nav {
@@ -89,28 +93,9 @@ nav {
   color: $white-text;
 }
 
-.main-section-buttons {
-  margin-top: 1rem;
-}
-
-.main-section-buttons {
-  .primary-button {
-    margin-right: 1rem;
-  }
-}
-
 @media (max-width: 575.98px) {
   .main-section {
     padding: 20vh 0 0 0;
-  }
-
-  .main-section-buttons {
-    display: flex;
-    justify-content: center;
-  }
-
-  nav {
-    position: static;
   }
 }
 

@@ -30,13 +30,13 @@ function App() {
           </ul>
         </div>
       </nav>
-      <section className="landing">
+      <section className="container-fluid landing px-3">
         <div className="main-section">
           <p className="main-text m-0">Serwis komputerowy</p>
           <p className="text m-0">Wszystko dopasowane do Twoich potrzeb</p>
           <p className="text m-0">Zrób zgłoszenie i przekonaj się sam</p>
-          <div className="main-section-buttons">
-            <button className="btn primary-button">Zgłoszenie</button>
+          <div className="mt-3 d-flex justify-content-center justify-content-md-start">
+            <button className="btn primary-button mr-3">Zgłoszenie</button>
             <button className="btn outline-button">Kontakt</button>
           </div>
         </div>
