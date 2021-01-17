@@ -1,8 +1,12 @@
 import React from "react";
 import "./App.scss";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {useSelector} from 'react-redux';
 
-function App() {
-  return (
+function App()
+{
+  const isLogged = useSelector(state => state.isLogged);
+    return (
     <div className="App">
       <nav className="navbar navbar-expand-md sticky-top navbar-dark px-0 w-100 bg-dark">
         <button
@@ -25,7 +29,7 @@ function App() {
               <a href="#">Kontakt</a>
             </li>
             <li className="report">
-              <a href="#">Zgłoszenie</a>
+              <a href="#">{isLogged ? 'Zgłoszenie' : 'Zaloguj się'}</a>
             </li>
           </ul>
         </div>
@@ -41,9 +45,33 @@ function App() {
           </div>
         </div>
       </section>
-      <section className="landing"></section>
+      <section className="about-us">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-12 mt-5 mb-5">
+              <h2 className="text-center display-4">Czym się zajmujemy? <FontAwesomeIcon className="blue" icon="power-off" /></h2>
+              
+            </div>
+            <div className="col-lg-4 col-md-6 text-center">
+              <img className="svg-description" src="img/technics.svg" alt="technics"/>
+              <p className="text-description text-center">Serwis</p>
+            </div>
+            <div className="col-lg-4 col-md-6 text-center">
+              <img className="svg-description" src="img/testimonials.svg" alt="clients"/>
+              <p className="text-description text-center">Fachowa obsługa</p>
+            </div>
+            <div className="col-lg-4 col-md-6 text-center">
+              <img className="svg-description" src="img/desktop-computer.svg" alt="desktop-computer"/>
+              <p className="text-description text-center">Sklep IT</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* Icons made by <a href="https://www.flaticon.com/authors/pixelmeetup" title="Pixelmeetup">Pixelmeetup</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a> */}
+      {/* Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a> */}
+      {/* Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a> */}
     </div>
-  );
+    );
 }
 
 export default App;

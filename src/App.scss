@@ -1,5 +1,8 @@
+//colors
 $primary-color: rgb(221, 164, 59);
 $white-text: rgb(230, 221, 221);
+$blue: rgb(121, 179, 255);
+//other
 $section-height: 90vh;
 $border-radius: 30px;
 
@@ -54,6 +57,12 @@ nav {
   font-size: 1.2em;
 }
 
+.text-description {
+  color: $primary-color;
+  font-weight: 300;
+  font-size: 2em;
+}
+
 .main-text {
   color: $primary-color;
   font-weight: 800;
@@ -93,9 +102,23 @@ nav {
   color: $white-text;
 }
 
+.svg-description {
+  height: 300px;
+  width: 300px;
+}
+
+.blue {
+  color: $blue;
+}
+
 @media (max-width: 575.98px) {
   .main-section {
     padding: 20vh 0 0 0;
+  }
+
+  .svg-description {
+    height: 200px;
+    width: 200px;
   }
 }
 
