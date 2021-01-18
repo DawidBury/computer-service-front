@@ -1,24 +1,25 @@
-import React from "react";
+import React, {useState} from "react";
 import "./App.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {useSelector} from 'react-redux';
+import SignInModal from "./components/SignInModal";
 
 function App()
 {
-  const isLogged = useSelector(state => state.isLogged);
+  const [modalShow, setModalShow] = useState(false);
     return (
     <div className="App">
+      <SignInModal show={modalShow} onHide={() => setModalShow(false)} />
       <nav className="navbar navbar-expand-md sticky-top navbar-dark px-0 w-100 bg-dark">
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-toggle="collapse"
           data-target="#collapsibleNavbar"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-          <ul class="navbar-nav w-100">
+        <div className="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul className="navbar-nav w-100">
             <li>
               <a href="#">Strona główna</a>
             </li>
@@ -28,9 +29,9 @@ function App()
             <li>
               <a href="#">Kontakt</a>
             </li>
-            <li className="report">
-              <a href="#">{isLogged ? 'Zgłoszenie' : 'Zaloguj się'}</a>
-            </li>
+            <div className="d-flex align-items-center mr-2">
+              <button className="btn primary-button" onClick={() => setModalShow(true)}>Zgłoszenie</button>
+            </div>
           </ul>
         </div>
       </nav>

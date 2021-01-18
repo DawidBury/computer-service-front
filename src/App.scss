@@ -1,7 +1,8 @@
 //colors
 $primary-color: rgb(221, 164, 59);
-$white-text: rgb(230, 221, 221);
+$white-text: rgb(255, 243, 243);
 $blue: rgb(121, 179, 255);
+$dark-text: #212529;
 //other
 $section-height: 90vh;
 $border-radius: 30px;
@@ -99,7 +100,7 @@ nav {
 }
 
 .outline-button:hover {
-  color: $white-text;
+  color: $dark-text;
 }
 
 .svg-description {
