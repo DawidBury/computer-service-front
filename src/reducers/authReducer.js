@@ -1,7 +1,7 @@
 const initState = {
     authError: null,
     user: JSON.parse(localStorage.getItem('user')) !== undefined ? JSON.parse(localStorage.getItem('user')) : null
-  }
+}
   
   const authReducer = (state = initState, action) => {
     switch (action.type) {

@@ -1,14 +1,14 @@
 import React, {useState} from "react";
 import "./App.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import SignInModal from "./components/SignInModal";
+import SignUpModal from "./components/SignUpModal";
 
 function App()
 {
   const [modalShow, setModalShow] = useState(false);
     return (
     <div className="App">
-      <SignInModal show={modalShow} onHide={() => setModalShow(false)} />
+      <SignUpModal show={modalShow} onHide={() => setModalShow(false)} />
       <nav className="navbar navbar-expand-md sticky-top navbar-dark px-0 w-100 bg-dark">
         <button
           className="navbar-toggler"
