@@ -5,10 +5,10 @@ import SignUpModal from "./components/SignUpModal";
 
 function App()
 {
-  const [modalShow, setModalShow] = useState(false);
+  const [modalRegisterShow, setModalRegisterShow] = useState(false);
+  const [modalLoginShow, setModalLoginShow] = useState(false);
     return (
     <div className="App">
-      <SignUpModal show={modalShow} onHide={() => setModalShow(false)} />
       <nav className="navbar navbar-expand-md sticky-top navbar-dark px-0 w-100 bg-dark">
         <button
           className="navbar-toggler"
@@ -21,6 +21,12 @@ function App()
         <div className="collapse navbar-collapse" id="collapsibleNavbar">
           <ul className="navbar-nav w-100">
             <li>
+              <a href="#" onClick={() => setModalRegisterShow(true)}>Zarejestruj się</a>
+            </li>
+            <li>
+              <a href="#" onClick={() => setModalLoginShow(true)}>Zaloguj się</a>
+            </li>
+            <li>
               <a href="#">Strona główna</a>
             </li>
             <li>
@@ -30,12 +36,13 @@ function App()
               <a href="#">Kontakt</a>
             </li>
             <div className="d-flex align-items-center mr-2">
-              <button className="btn primary-button" onClick={() => setModalShow(true)}>Zgłoszenie</button>
+              <button className="btn primary-button">Zgłoszenie</button>
             </div>
           </ul>
         </div>
       </nav>
       <section className="container-fluid landing px-3">
+      <SignUpModal show={modalRegisterShow} onHide={() => setModalRegisterShow(false)} />
         <div className="main-section">
           <p className="main-text m-0">Serwis komputerowy</p>
           <p className="text m-0">Wszystko dopasowane do Twoich potrzeb</p>

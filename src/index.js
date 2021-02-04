@@ -8,12 +8,13 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware  } from 'redux';
+import thunk from 'redux-thunk';
 import allReducers from './reducers';
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
 
 library.add(fas);
-const store = createStore(allReducers);
+const store = createStore(allReducers, applyMiddleware(thunk.withExtraArgument(window.REDUX_DEVTOOLS_EXTENSION && window.REDUX_DEVTOOLS_EXTENSION())),);
 
 ReactDOM.render(
     <Provider store={store}>

@@ -11,19 +11,17 @@ export const signOut = () => {
 
 export const signUp = (newUser) => {
     return (dispatch, getState) => {
-        console.log('DZIAŁA');
         axios.post(`${apiUrl}/users/register`, {
-            'user': {
-                'email': newUser.email,
-                'password': newUser.password,
-            }
+            'email': newUser.email,
+            'password': newUser.password,
+            'phone': newUser.phone,
+            'firstName': newUser.firstName,
+            'lastName': newUser.lastName,
         }).then(function (res) {
                 dispatch({ type: 'SIGNUP_SUCCESS', res });
-                dispatch({ type: 'REGISTER_NOTIFICATION_SWITCH', payload: true, text: 'Zostałeś zarejestrowany!' });
-                dispatch({ type: 'LOGIN_SUCCESS', res });
                 return true
             }).catch(function (err) {
-                dispatch({ type: 'SIGNUP_ERROR', err });
+                console.log(err);
                 return false
             });
     }
