@@ -16,6 +16,13 @@ const initState = {
           ...state,
           authError: Object.keys(action.err.response.data.errors)[0],
         }
+      case 'LOGIN_SUCCESS':
+        localStorage.setItem('user', JSON.stringify((action.res.data)));
+        return {
+          ...state,
+          authError: null,
+          user: action.res.data,
+        }
   
       default:
         return state

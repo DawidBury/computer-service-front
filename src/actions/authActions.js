@@ -27,3 +27,19 @@ export const signUp = (newUser) => {
     }
 }
 
+
+export const login = (user) => {
+    return (dispatch, getState) => {
+        axios.post(`${apiUrl}/users/login`, {
+            'email': user.email,
+            'password': user.password,
+        }).then(function (res) {
+                dispatch({ type: 'LOGIN_SUCCESS', res });
+                return true
+            }).catch(function (err) {
+                console.log(err);
+                return false
+            });
+    }
+}
+

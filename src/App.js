@@ -2,11 +2,14 @@ import React, {useState} from "react";
 import "./App.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SignUpModal from "./components/SignUpModal";
+import LoginModal from "./components/LoginModal";
+import { connect } from "react-redux";
 
-function App()
+function App(props)
 {
   const [modalRegisterShow, setModalRegisterShow] = useState(false);
   const [modalLoginShow, setModalLoginShow] = useState(false);
+  const { user } = props;
     return (
     <div className="App">
       <nav className="navbar navbar-expand-md sticky-top navbar-dark px-0 w-100 bg-dark">
@@ -24,7 +27,7 @@ function App()
               <a href="#" onClick={() => setModalRegisterShow(true)}>Zarejestruj się</a>
             </li>
             <li>
-              <a href="#" onClick={() => setModalLoginShow(true)}>Zaloguj się</a>
+              {user ? <a href="#">Moje konto</a> : <a href="#" onClick={() => setModalLoginShow(true)}>Zaloguj się</a>}
             </li>
             <li>
               <a href="#">Strona główna</a>
@@ -43,6 +46,8 @@ function App()
       </nav>
       <section className="container-fluid landing px-3">
       <SignUpModal show={modalRegisterShow} onHide={() => setModalRegisterShow(false)} />
+      
+      { user ? <div></div> : <LoginModal show={modalLoginShow} onHide={() => setModalLoginShow(false)} />}
         <div className="main-section">
           <p className="main-text m-0">Serwis komputerowy</p>
           <p className="text m-0">Wszystko dopasowane do Twoich potrzeb</p>
@@ -82,4 +87,10 @@ function App()
     );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    user: state.auth.user
+  };
+};
+
+export default connect(mapStateToProps, null)(App);
