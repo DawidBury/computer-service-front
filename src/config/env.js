@@ -1,3 +1,3 @@
-const apiUrl = 'http://51.195.46.220/computer-service-api/public/index.php/api';
+const apiUrl = 'http://itscomp.pl/api';
 
 export default apiUrl;

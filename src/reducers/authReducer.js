@@ -18,6 +18,7 @@ const initState = {
         }
       case 'LOGIN_SUCCESS':
         localStorage.setItem('user', JSON.stringify((action.res.data)));
+        console.log(JSON.parse(localStorage.getItem('user')));
         return {
           ...state,
           authError: null,

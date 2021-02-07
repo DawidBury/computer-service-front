@@ -3,12 +3,14 @@ import "./App.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SignUpModal from "./components/SignUpModal";
 import LoginModal from "./components/LoginModal";
+import ServiceRequest from "./components/ServiceRequest";
 import { connect } from "react-redux";
 
 function App(props)
 {
   const [modalRegisterShow, setModalRegisterShow] = useState(false);
   const [modalLoginShow, setModalLoginShow] = useState(false);
+  const [modalServiceRequestShow, setModalServiceRequestShow] = useState(false);
   const { user } = props;
     return (
     <div className="App">
@@ -39,14 +41,14 @@ function App(props)
               <a href="#">Kontakt</a>
             </li>
             <div className="d-flex align-items-center mr-2">
-              <button className="btn primary-button">Zgłoszenie</button>
+              <button onClick={() => setModalServiceRequestShow(true)} className="btn primary-button">Zgłoszenie</button>
             </div>
           </ul>
         </div>
       </nav>
       <section className="container-fluid landing px-3">
       <SignUpModal show={modalRegisterShow} onHide={() => setModalRegisterShow(false)} />
-      
+      { user ? <ServiceRequest user={user} show={modalServiceRequestShow} onHide={() => setModalServiceRequestShow(false)} /> : null }
       { user ? <div></div> : <LoginModal show={modalLoginShow} onHide={() => setModalLoginShow(false)} />}
         <div className="main-section">
           <p className="main-text m-0">Serwis komputerowy</p>
