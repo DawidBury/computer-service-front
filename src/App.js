@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SignUpModal from "./components/SignUpModal";
 import LoginModal from "./components/LoginModal";
 import ServiceRequest from "./components/ServiceRequest";
+import MyData from "./components/MyData";
+import { listServiceRequests } from './actions/userActions';
 import { connect } from "react-redux";
 
 function App(props)
@@ -11,6 +13,7 @@ function App(props)
   const [modalRegisterShow, setModalRegisterShow] = useState(false);
   const [modalLoginShow, setModalLoginShow] = useState(false);
   const [modalServiceRequestShow, setModalServiceRequestShow] = useState(false);
+  const [modalMyDataShow, setModalMyDataShow] = useState(false);
   const { user } = props;
     return (
     <div className="App">
@@ -29,7 +32,7 @@ function App(props)
               <a href="#" onClick={() => setModalRegisterShow(true)}>Zarejestruj się</a>
             </li>
             <li>
-              {user ? <a href="#">Moje konto</a> : <a href="#" onClick={() => setModalLoginShow(true)}>Zaloguj się</a>}
+              {user ? <a onClick={() => setModalMyDataShow(true)} href="#">Moje konto</a> : <a href="#" onClick={() => setModalLoginShow(true)}>Zaloguj się</a>}
             </li>
             <li>
               <a href="#">Strona główna</a>
@@ -49,7 +52,7 @@ function App(props)
       <section className="container-fluid landing px-3">
       <SignUpModal show={modalRegisterShow} onHide={() => setModalRegisterShow(false)} />
       { user ? <ServiceRequest user={user} show={modalServiceRequestShow} onHide={() => setModalServiceRequestShow(false)} /> : null }
-      { user ? <div></div> : <LoginModal show={modalLoginShow} onHide={() => setModalLoginShow(false)} />}
+      { user ? <MyData serviceRequests={listServiceRequests(user)} user={user} show={modalMyDataShow} onHide={() => setModalMyDataShow(false)} /> : <LoginModal show={modalLoginShow} onHide={() => setModalLoginShow(false)} />}
         <div className="main-section">
           <p className="main-text m-0">Serwis komputerowy</p>
           <p className="text m-0">Wszystko dopasowane do Twoich potrzeb</p>

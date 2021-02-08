@@ -1,6 +1,7 @@
 const initState = {
     serviceRequestError: null,
-    serviceRequest: null
+    serviceRequest: null,
+    listServiceRequests: null
 }
   
 const userReducer = (state = initState, action) => {
@@ -11,7 +12,11 @@ const userReducer = (state = initState, action) => {
             serviceRequest: action.res,
             serviceRequestError: null,
         }
-
+    case 'SERVICE_REQUEST_LIST_SUCCESS':
+        return {
+            ...state,
+            listServiceRequests: JSON.stringify(action.res.data),
+        }
     default:
         return state
     }

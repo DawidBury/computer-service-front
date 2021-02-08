@@ -18,3 +18,17 @@ export const createServiceRequest = (data) => {
             });
     }
 }
+
+export const listServiceRequests = (data) => {
+    return (dispatch, getState) => {
+        axios.get(`${apiUrl}/service-requests/users`, {
+            headers: { Authorization: `Bearer ${data.user.token}` }
+        }).then(function (res) {
+                dispatch({ type: 'SERVICE_REQUEST_LIST_SUCCESS', res });
+                return true
+            }).catch(function (err) {
+                console.log(err);
+                return false
+            });
+    }
+}
