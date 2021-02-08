@@ -45,6 +45,10 @@ nav {
     justify-content: center;
     border-radius: $border-radius;
   }
+  div {
+    justify-content: center;
+    display: flex;
+  }
   a {
     color: $white-text;
     font-weight: 500;
@@ -59,7 +63,7 @@ nav {
 }
 
 .text-description {
-  color: $primary-color;
+  color: $dark-text;
   font-weight: 300;
   font-size: 2em;
 }
@@ -110,6 +114,39 @@ nav {
 
 .blue {
   color: $blue;
+}
+
+.primary-color {
+  color: $primary-color;
+}
+
+.dark-text {
+  color: $dark-text;
+}
+
+.about-us {
+  background: rgb(129, 114, 0);
+  background: linear-gradient(
+    90deg,
+    rgba(129, 114, 0, 0.5) 0%,
+    rgba(221, 164, 59, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+.contact {
+  background: rgb(129, 114, 0);
+  background: linear-gradient(
+    90deg,
+    rgba(129, 114, 0, 0.5) 0%,
+    rgba(221, 164, 59, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+footer {
+  background-color: $dark-text;
+  color: $white-text;
 }
 
 @media (max-width: 575.98px) {
