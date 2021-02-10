@@ -40,3 +40,17 @@ export const listServiceRequests = (data) => {
       });
   };
 };
+
+export const listCMS = () => {
+  return (dispatch, getState) => {
+    axios
+      .get(`${apiUrl}/cms/active`)
+      .then(function (res) {
+        dispatch({ type: "CMS_LIST_SUCCESS", res });
+        return true;
+      })
+      .catch(function (err) {
+        return false;
+      });
+  };
+};

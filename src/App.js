@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SignUpModal from "./components/SignUpModal";
@@ -7,13 +7,28 @@ import ServiceRequest from "./components/ServiceRequest";
 import MyData from "./components/MyData";
 import { listServiceRequests } from "./actions/userActions";
 import { connect } from "react-redux";
+import axios from "axios";
+import apiUrl from "./config/env";
 
 function App(props) {
   const [modalRegisterShow, setModalRegisterShow] = useState(false);
   const [modalLoginShow, setModalLoginShow] = useState(false);
   const [modalServiceRequestShow, setModalServiceRequestShow] = useState(false);
   const [modalMyDataShow, setModalMyDataShow] = useState(false);
+  const [cms, setCms] = useState([]);
   const { user } = props;
+
+  const getCMS = async () => {
+    try {
+      const posts = await axios.get(`${apiUrl}/cms/active`);
+      setCms(posts.data);
+    } catch (err) {}
+  };
+
+  useEffect(() => {
+    getCMS();
+  }, []);
+
   return (
     <div className="App">
       <nav className="navbar navbar-expand-md sticky-top navbar-dark px-0 w-100 bg-dark">
@@ -153,13 +168,21 @@ function App(props) {
               <h1>
                 <FontAwesomeIcon className="dark-text" icon="phone" />
               </h1>
-              <p className="text-description text-center">+48 500 100 200</p>
+              <p className="text-description text-center">
+                {cms.map((post) =>
+                  post.attribute === "contact-phone" ? post.value : null
+                )}
+              </p>
             </div>
             <div className="col-lg-6 col-md-6 text-center">
               <h1>
                 <FontAwesomeIcon className="dark-text" icon="at" />
               </h1>
-              <p className="text-description text-center">kontakt@itscomp.pl</p>
+              <p className="text-description text-center">
+                {cms.map((post) =>
+                  post.attribute === "contact-email" ? post.value : null
+                )}
+              </p>
             </div>
             <div className="col-12 mt-5 mb-5">
               <h2 className="text-center display-4">
@@ -171,7 +194,9 @@ function App(props) {
                 <FontAwesomeIcon className="dark-text" icon="building" />
               </h1>
               <p className="text-description text-center">
-                Wrocław, ul. Legnicka 1
+                {cms.map((post) =>
+                  post.attribute === "address" ? post.value : null
+                )}
               </p>
             </div>
           </div>
