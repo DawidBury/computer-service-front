@@ -44,6 +44,7 @@ export const login = (user) => {
         return true;
       })
       .catch(function (err) {
+        dispatch({ type: "LOGIN_ERROR", err });
         return false;
       });
   };

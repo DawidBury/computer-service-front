@@ -26,6 +26,13 @@ const authReducer = (state = initState, action) => {
         authError: null,
         user: action.res.data,
       };
+    case "LOGIN_ERROR":
+      localStorage.setItem("user", null);
+      return {
+        ...state,
+        authError: action.err.data,
+        user: null,
+      };
 
     default:
       return state;
