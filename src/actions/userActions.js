@@ -54,3 +54,9 @@ export const listCMS = () => {
       });
   };
 };
+
+export const signOut = () => {
+  return (dispatch, getState) => {
+    dispatch({ type: "SIGNOUT_SUCCESS" });
+  };
+};

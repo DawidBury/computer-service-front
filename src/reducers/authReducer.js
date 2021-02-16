@@ -33,6 +33,12 @@ const authReducer = (state = initState, action) => {
         authError: action.err.data,
         user: null,
       };
+    case "SIGNOUT_SUCCESS":
+      localStorage.setItem("user", null);
+      return {
+        ...state,
+        user: null,
+      };
 
     default:
       return state;

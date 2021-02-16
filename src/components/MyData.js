@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Modal, Container } from "react-bootstrap";
-import { listServiceRequests } from "../actions/userActions";
+import { listServiceRequests, signOut } from "../actions/userActions";
 import { connect } from "react-redux";
 import Alert from "react-bootstrap/Alert";
 
@@ -12,13 +12,28 @@ function MyData(props) {
     return props.listServiceRequests({ user });
   }, []);
 
+  const formatDate = (timestamp) => {
+    const date = new Date(timestamp);
+
+    return (
+      date.getDate() +
+      "/" +
+      (date.getMonth() + 1) +
+      "/" +
+      date.getFullYear() +
+      " " +
+      String(date.getHours()).padStart(2, "0") +
+      ":" +
+      String(date.getMinutes()).padStart(2, "0")
+    );
+  };
   return (
     <>
       <Modal {...props} aria-labelledby="contained-modal-title-vcenter">
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body className="show-grid">
           <Container>
-            <div className="d-flex justify-content-center mb-2">
+            <div className="d-flex justify-content-around mb-2">
               <button
                 style={{ width: "9rem", height: "4rem" }}
                 className="btn outline-button"
@@ -28,12 +43,9 @@ function MyData(props) {
               <button
                 style={{ width: "9rem", height: "4rem" }}
                 className="btn outline-button"
-              >
-                Zmień hasło
-              </button>
-              <button
-                style={{ width: "9rem", height: "4rem" }}
-                className="btn outline-button"
+                onClick={() => {
+                  return props.signOut();
+                }}
               >
                 Wyloguj
               </button>
@@ -49,14 +61,19 @@ function MyData(props) {
                       <ul className="list-group list-group-flush">
                         <li className="list-group-item">
                           Sugerowany termin dostarczenia:{" "}
-                          {data.proposedDeliveryTime}
+                          {data.proposedDeliveryTime !== null
+                            ? formatDate(data.proposedDeliveryTime)
+                            : "Brak"}
                         </li>
                         <li className="list-group-item">
-                          Termin odbioru sprzętu: {data.deadline}
+                          Termin odbioru sprzętu:{" "}
+                          {data.deadline !== null
+                            ? formatDate(data.deadline)
+                            : "Brak"}
                         </li>
                         <li className="list-group-item">
                           Status:{" "}
-                          {data.task !== null
+                          {data.task !== null && data.task.inProgress === true
                             ? "W realizacji"
                             : "W oczekiwaniu"}
                         </li>
@@ -75,6 +92,7 @@ function MyData(props) {
 const mapDispatchToProps = (dispatch) => {
   return {
     listServiceRequests: (data) => dispatch(listServiceRequests(data)),
+    signOut: () => dispatch(signOut()),
   };
 };
 
